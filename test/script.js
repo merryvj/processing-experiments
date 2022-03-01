@@ -5,10 +5,8 @@ function setup() {
     noStroke();
     fill(255);
     for (let i = 0; i < 20; i++){
-      let randx = random(0, 600);
-      let randy = random(0, 600);
-      let randrad = random(1, 5);
-      let star = new Star(randx, randy, randrad);
+      
+      let star = new Star();
       ellipse(star.x, star.y, star.radius, star.radius);
     }
   }
@@ -18,9 +16,9 @@ function setup() {
   }
 
   class Star {
-    constructor(x, y, radius) {
-      this.x = x;
-      this.y = y;
-      this.radius = radius;
+    constructor() {
+      this.x = random(0, 600);
+      this.y = random(0, 600);
+      this.radius = random(1, 5);
     }
   }
