@@ -1,8 +1,9 @@
 function setup() {
-  
+
     createCanvas(600, 600);
+    background(0);
     noStroke();
-    fill(100);
+    fill(255);
     for (let i = 0; i < 20; i++){
       let randx = random(0, 600);
       let randy = random(0, 600);
@@ -13,7 +14,7 @@ function setup() {
   }
   
   function draw() {
-    background(0);
+    
   }
 
   class Star {
