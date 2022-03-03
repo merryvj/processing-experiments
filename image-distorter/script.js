@@ -1,24 +1,28 @@
 let img;
-let inp;
+let imgOptions;
+
 function preload() {
-    createCanvas(100, 100);
-
-    inp = createInput('https://images.unsplash.com/photo-1645341777045-8f18b88e2712?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80');
-    inp.position(0, 0);
-    inp.size(200);
-    img = loadImage(inp.value());
-
-    //img = loadImage('https://images.unsplash.com/photo-1642832944677-7a22c1cdbee4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=977&q=80')
-  //img = loadImage('https://images.unsplash.com/photo-1634024242828-74dd2ad26d12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80');
-    //img = loadImage('https://images.unsplash.com/photo-1574786201468-574f3151871e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80')
-    //img = loadImage('https://images.unsplash.com/photo-1645341777045-8f18b88e2712?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80')
+    img = loadImage('https://images.unsplash.com/photo-1634024242828-74dd2ad26d12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80');
+    img1 = loadImage('https://images.unsplash.com/photo-1634024242828-74dd2ad26d12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80');
+    img2 = loadImage('https://images.unsplash.com/photo-1511489731872-324afc650052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80');
+    img3 = loadImage('https://images.unsplash.com/photo-1513564774965-ac25ddf81e1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80');
+    img4 = loadImage('https://images.unsplash.com/photo-1645341777045-8f18b88e2712?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80');
+    img5 = loadImage('https://images.unsplash.com/photo-1600030808777-b063d6c20a5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80');
+    imgOptions = [
+        img1, img2, img3, img4, img5
+     ]
 }
 
 function setup() {
-    
-    button = createButton('load image');
-    button.position(inp.x + inp.width, 0);
-    button.mousePressed(loadImg);
+    createCanvas(150, 150);
+    sel = createSelect();
+    sel.position(0,0);
+    sel.option('1');
+    sel.option('2');
+    sel.option('3');
+    sel.option('4');
+    sel.option('5');
+    sel.changed(loadImg)
 
     img.resize(width, height);
     image(img, 0, 0);
@@ -31,7 +35,7 @@ function draw() {
 
     
     if(mouseIsPressed) {
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 3000; i++) {
         sortPixels();
         }
     }
@@ -65,9 +69,11 @@ function sortPixels() {
   }
 
 function loadImg() {
-    img = loadImage(inp.value());
-    img.resize(width, height);
+    let selectedImg = sel.value() - 1;
+    img = imgOptions[selectedImg];
 
+    img.resize(width, height);
     image(img, 0, 0);
     noSmooth();
+
 }
