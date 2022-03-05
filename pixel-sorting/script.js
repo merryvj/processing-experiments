@@ -14,7 +14,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(150, 150);
+    createCanvas(100, 100);
     sel = createSelect();
     sel.position(0,0);
     sel.option('1');
