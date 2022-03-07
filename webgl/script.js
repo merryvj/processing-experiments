@@ -1,8 +1,11 @@
 function setup() {
-    createCanvas(300, 300, WEBGL);
-}
-
-function draw() {
+    createCanvas(windowWidth, windowHeight, WEBGL);
+    ortho(-width, width, height, -height/2, 0.1, 100);
+  }
+  
+  function draw(){
     background(255);
     box();
-}
+    
+
+  }
