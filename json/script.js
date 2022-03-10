@@ -7,6 +7,7 @@ function preload() {
 }
 
 function setup() {
+  createCanvas(1000, 500);
   noLoop();
 }
 
@@ -16,12 +17,10 @@ function draw() {
     for (let i = 0; i < Object.keys(asteroids).length; i++) {
         let date = Object.keys(asteroids)[i];
         for (let roid in asteroids[date]) {
-            console.log(roid);
+            let data = asteroids[date][roid];
+            let diameter = data.estimated_diameter.kilometers.estimated_diameter_min;
+            ellipse(data.close_approach_data[0].miss_distance.lunar, height/2, diameter * 100);
+            
         }
-        // for (let roid in date) {
-        //     console.log(roid);
-        //     // let diameter = roid.estimated_diameter.kilometers.estimated_diameter_min;
-        //     // ellipse(roid.close_approach_data[0].miss_distance.lunar, height/2, diameter * 10);
-        // }
     }
 }
